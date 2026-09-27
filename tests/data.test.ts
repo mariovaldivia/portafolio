@@ -18,7 +18,8 @@ function collectLocalized(
     if (keys.length === 2 && keys.includes('es') && keys.includes('en')) {
       out.push({ path, value: value as Record<string, unknown> });
     } else {
-      for (const [key, child] of Object.entries(value)) collectLocalized(child, `${path}.${key}`, out);
+      for (const [key, child] of Object.entries(value))
+        collectLocalized(child, `${path}.${key}`, out);
     }
   }
   return out;

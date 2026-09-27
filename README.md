@@ -15,14 +15,14 @@ npm run format    # Prettier
 
 ## Editar contenido
 
-| Qué | Dónde |
-|---|---|
-| Nombre, título, frase, bio, links, CV | `src/data/profile.ts` |
-| Experiencia laboral | `src/data/experience.ts` |
-| Habilidades (chips) | `src/data/skills.ts` — íconos de [simple-icons](https://simpleicons.org) (`import { siNombre } from 'simple-icons'`) |
-| Terminal del hero | `src/data/terminal.ts` |
-| Textos de la interfaz | `src/i18n/ui.ts` |
-| Proyectos | `src/content/projects/es/*.md` y `src/content/projects/en/*.md` (mismo nombre de archivo en ambos idiomas) |
+| Qué                                   | Dónde                                                                                                                |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Nombre, título, frase, bio, links, CV | `src/data/profile.ts`                                                                                                |
+| Experiencia laboral                   | `src/data/experience.ts`                                                                                             |
+| Habilidades (chips)                   | `src/data/skills.ts` — íconos de [simple-icons](https://simpleicons.org) (`import { siNombre } from 'simple-icons'`) |
+| Terminal del hero                     | `src/data/terminal.ts`                                                                                               |
+| Textos de la interfaz                 | `src/i18n/ui.ts`                                                                                                     |
+| Proyectos                             | `src/content/projects/es/*.md` y `src/content/projects/en/*.md` (mismo nombre de archivo en ambos idiomas)           |
 
 - Los links de contacto usan `mailto:tu@correo.com` para el email y URLs completas para el resto.
 - Los CV van en `public/cv-es.pdf` y `public/cv-en.pdf`.

@@ -27,11 +27,9 @@ const absolute = (path: string) => new URL(path, Astro.site).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={absolute(Astro.url.pathname)} />
-    {
-      langs.map((code) => (
-        <link rel="alternate" hreflang={code} href={absolute(getAlternatePath(Astro.url, code))} />
-      ))
-    }
+    {langs.map((code) => (
+      <link rel="alternate" hreflang={code} href={absolute(getAlternatePath(Astro.url, code))} />
+    ))}
     <link
       rel="alternate"
       hreflang="x-default"

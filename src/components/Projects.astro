@@ -16,12 +16,10 @@ const projects = await getProjectsByLang(lang, { featuredOnly: true });
 
 <Section id={t('anchor.projects')} kicker={t('projects.kicker')} title={t('projects.title')}>
   <ul class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
-    {
-      projects.map((entry) => (
-        <li>
-          <ProjectCard entry={entry} lang={lang} />
-        </li>
-      ))
-    }
+    {projects.map((entry) => (
+      <li>
+        <ProjectCard entry={entry} lang={lang} />
+      </li>
+    ))}
   </ul>
 </Section>

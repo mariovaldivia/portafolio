@@ -12,20 +12,20 @@ import { terminalLines } from '../data/terminal';
     <span class="size-2.5 rounded-full bg-line"></span>
   </div>
   <div class="overflow-x-auto px-4 py-3.5 font-mono text-xs leading-7 text-muted">
-    {
-      terminalLines.map((line) =>
-        line.kind === 'cmd' ? (
-          <div class="whitespace-pre">
-            <span class="text-accent">$</span> {line.text}
-          </div>
-        ) : (
-          <div class:list={['whitespace-pre', { 'text-accent': line.kind === 'ok' }]}>
-            {line.text}
-          </div>
-        ),
-      )
-    }
-    <div class="whitespace-pre"><span class="text-accent">$</span> <span class="caret"></span></div>
+    {terminalLines.map((line) =>
+      line.kind === 'cmd' ? (
+        <div class="whitespace-pre">
+          <span class="text-accent">$</span> {line.text}
+        </div>
+      ) : (
+        <div class:list={['whitespace-pre', { 'text-accent': line.kind === 'ok' }]}>
+          {line.text}
+        </div>
+      ),
+    )}
+    <div class="whitespace-pre">
+      <span class="text-accent">$</span> <span class="caret"></span>
+    </div>
   </div>
 </div>
 
