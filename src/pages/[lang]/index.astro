@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import About from '../../components/About.astro';
 import Experience from '../../components/Experience.astro';
+import Skills from '../../components/Skills.astro';
 
 export function getStaticPaths() {
   return (Object.keys(languages) as Lang[]).map((lang) => ({ params: { lang }, props: { lang } }));
@@ -26,5 +27,6 @@ const t = useTranslations(lang);
   <Hero lang={lang} />
   <About lang={lang} />
   <Experience lang={lang} />
+  <Skills lang={lang} />
   <!-- secciones -->
 </BaseLayout>

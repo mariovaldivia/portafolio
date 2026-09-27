@@ -1,0 +1,39 @@
+---
+import type { Tech } from '../data/skills';
+
+interface Props {
+  tech: Tech;
+}
+
+const { tech } = Astro.props;
+const brand = tech.icon ? (tech.brandLight ?? `#${tech.icon.hex}`) : undefined;
+const brandDark = tech.icon ? (tech.brandDark ?? brand) : undefined;
+---
+
+<li
+  class="chip inline-flex items-center gap-2 rounded-lg border border-line bg-surface py-2 pr-3.5 pl-2.5 text-sm font-medium transition hover:-translate-y-px hover:border-accent"
+  style={brand ? `--brand: ${brand}; --brand-dark: ${brandDark}` : undefined}
+>
+  {
+    tech.icon && (
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        class="chip-icon size-[18px] fill-current text-muted transition-colors"
+      >
+        <path d={tech.icon.path} />
+      </svg>
+    )
+  }
+  {tech.name}
+</li>
+
+<style>
+  .chip:hover .chip-icon {
+    color: var(--brand);
+  }
+
+  :global(.dark) .chip:hover .chip-icon {
+    color: var(--brand-dark);
+  }
+</style>

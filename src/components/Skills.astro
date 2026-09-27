@@ -1,0 +1,33 @@
+---
+import { skillCategories } from '../data/skills';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import Section from './Section.astro';
+import SkillChip from './SkillChip.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Section id={t('anchor.skills')} kicker={t('skills.kicker')} title={t('skills.title')}>
+  <div class="grid gap-10 sm:grid-cols-2">
+    {
+      skillCategories.map((category) => (
+        <div>
+          <h3 class="mb-3 text-xs font-semibold tracking-widest text-muted uppercase">
+            {category.title[lang]}
+          </h3>
+          <ul class="flex flex-wrap gap-2.5">
+            {category.items.map((tech) => (
+              <SkillChip tech={tech} />
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Section>
