@@ -1,5 +1,6 @@
 import {
   siClaude,
+  siBootstrap,
   siCss,
   siDjango,
   siDocker,
@@ -84,6 +85,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'HTML', icon: siHtml5 },
       { name: 'CSS', icon: siCss, brandDark: '#9B6AD6' },
       { name: 'Tailwind CSS', icon: siTailwindcss },
+      { name: 'Bootstrap', icon: siBootstrap, brandDark: '#A07CF0' },
       { name: 'jQuery', icon: siJquery, brandDark: '#4DA3E0' },
     ],
   },
