@@ -1,0 +1,62 @@
+---
+import { experience } from '../data/experience';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { formatDateRange } from '../lib/dates';
+import Section from './Section.astro';
+import TagList from './TagList.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Section id={t('anchor.experience')} kicker={t('experience.kicker')} title={t('experience.title')}>
+  <ol class="ml-1 border-l border-line pl-7">
+    {
+      experience.map((job) => (
+        <li class="relative pb-12 last:pb-0">
+          <span
+            class="absolute top-1.5 -left-[33px] size-2.5 rounded-full bg-accent"
+            aria-hidden="true"
+          />
+          <p class="font-mono text-xs tracking-wide text-muted uppercase">
+            {formatDateRange(job.start, job.end, lang)} · {job.mode[lang]}
+          </p>
+          <h3 class="mt-1.5 text-lg font-semibold">
+            {job.role}{' '}
+            <span class="font-normal text-muted">
+              ·{' '}
+              {job.url ? (
+                <a href={job.url} target="_blank" rel="noopener" class="hover:text-accent">
+                  {job.company}
+                </a>
+              ) : (
+                job.company
+              )}
+            </span>
+          </h3>
+          <ul class="mt-3 list-disc space-y-1 pl-5 marker:text-muted">
+            {job.highlights.map((highlight) => (
+              <li>
+                {highlight.text[lang]}
+                {highlight.badge && (
+                  <span
+                    class="ml-2 rounded-full border border-accent px-2 py-px font-mono text-xs text-accent"
+                    title={t('experience.highlight')}
+                  >
+                    ★ <span class="sr-only">{t('experience.highlight')}</span>
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          <TagList items={job.stack} class="mt-4" />
+        </li>
+      ))
+    }
+  </ol>
+</Section>

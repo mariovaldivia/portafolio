@@ -1,0 +1,17 @@
+---
+import { profile } from '../data/profile';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import Section from './Section.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Section id={t('anchor.about')} kicker={t('about.kicker')}>
+  <p class="mt-5 max-w-2xl text-lg leading-relaxed">{profile.bio[lang]}</p>
+</Section>
