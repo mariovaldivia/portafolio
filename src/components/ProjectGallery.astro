@@ -1,0 +1,146 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage, Image } from 'astro:assets';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+export interface GalleryItem {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  items: GalleryItem[];
+  lang: Lang;
+}
+
+const { items, lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Versión grande para el visor (y para el enlace cuando no hay JavaScript).
+const photos = await Promise.all(
+  items.map(async (item) => ({
+    ...item,
+    full: await getImage({ src: item.src, width: Math.min(item.src.width, 1920), format: 'webp' }),
+  })),
+);
+---
+
+<section data-gallery class="mt-16" aria-label={t('gallery.label')}>
+  <ul class="grid gap-4 sm:grid-cols-2">
+    {photos.map((photo, i) => (
+      <li>
+        <figure>
+          <a
+            href={photo.full.src}
+            data-gallery-item={i}
+            data-caption={photo.caption ?? ''}
+            class="group block overflow-hidden rounded-lg border border-line bg-surface"
+          >
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              widths={[400, 800]}
+              sizes="(min-width: 768px) 360px, 100vw"
+              class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+          </a>
+          {photo.caption && (
+            <figcaption class="mt-2 text-sm text-muted">{photo.caption}</figcaption>
+          )}
+        </figure>
+      </li>
+    ))}
+  </ul>
+
+  <dialog
+    data-lightbox
+    aria-label={t('gallery.label')}
+    class="m-0 h-dvh max-h-none w-dvw max-w-none bg-black/90 p-0 text-white backdrop:bg-transparent"
+  >
+    <div
+      data-lightbox-backdrop
+      class="relative flex h-full w-full flex-col items-center justify-center gap-4 px-14 py-16"
+    >
+      <button
+        type="button"
+        data-lightbox-close
+        aria-label={t('gallery.close')}
+        class="absolute top-4 right-4 grid size-10 place-items-center rounded-full text-2xl text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+      >
+        ×
+      </button>
+      <button
+        type="button"
+        data-lightbox-prev
+        aria-label={t('gallery.prev')}
+        class="absolute top-1/2 left-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-3xl text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        data-lightbox-next
+        aria-label={t('gallery.next')}
+        class="absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-3xl text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+      >
+        ›
+      </button>
+      <img data-lightbox-image alt="" class="max-h-[78vh] max-w-full rounded-lg object-contain" />
+      <p class="text-center text-sm text-white/80">
+        <span data-lightbox-counter class="font-mono text-xs text-white/60"></span>
+        <span data-lightbox-caption class="ml-2"></span>
+      </p>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((root) => {
+    const links = [...root.querySelectorAll<HTMLAnchorElement>('[data-gallery-item]')];
+    const dialog = root.querySelector<HTMLDialogElement>('[data-lightbox]');
+    const image = root.querySelector<HTMLImageElement>('[data-lightbox-image]');
+    const counter = root.querySelector<HTMLElement>('[data-lightbox-counter]');
+    const caption = root.querySelector<HTMLElement>('[data-lightbox-caption]');
+    const prev = root.querySelector<HTMLButtonElement>('[data-lightbox-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-lightbox-next]');
+    if (!dialog || !image || !counter || !caption || !prev || !next || links.length === 0) return;
+
+    let index = 0;
+
+    const show = (i: number) => {
+      index = (i + links.length) % links.length;
+      const link = links[index]!;
+      image.src = link.href;
+      image.alt = link.querySelector('img')?.alt ?? '';
+      counter.textContent = `${index + 1} / ${links.length}`;
+      caption.textContent = link.dataset.caption ?? '';
+    };
+
+    prev.hidden = next.hidden = links.length < 2;
+
+    links.forEach((link, i) =>
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        show(i);
+        dialog.showModal();
+      }),
+    );
+
+    prev.addEventListener('click', () => show(index - 1));
+    next.addEventListener('click', () => show(index + 1));
+    root.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') show(index - 1);
+      if (event.key === 'ArrowRight') show(index + 1);
+    });
+
+    // Clic fuera de la foto y de los botones: cerrar.
+    dialog.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target === dialog || target.hasAttribute('data-lightbox-backdrop')) dialog.close();
+    });
+  });
+</script>

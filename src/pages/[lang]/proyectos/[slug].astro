@@ -2,6 +2,7 @@
 import type { InferGetStaticPropsType } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
+import ProjectGallery from '../../../components/ProjectGallery.astro';
 import TagList from '../../../components/TagList.astro';
 import { profile } from '../../../data/profile';
 import { localizePath, useTranslations } from '../../../i18n/utils';
@@ -21,7 +22,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { entry, lang } = Astro.props;
 const t = useTranslations(lang);
 const { Content } = await render(entry);
-const { title, summary, stack, year, company, repo, demo, cover } = entry.data;
+const { title, summary, stack, year, company, repo, demo, cover, coverAlt, gallery } = entry.data;
 const meta = [company, year].filter(Boolean).join(' · ');
 const externalLinks = [
   { href: repo, label: t('projects.repo') },
@@ -59,10 +60,21 @@ const externalLinks = [
       )}
     </header>
 
-    {cover && <Image src={cover} alt="" class="mt-10 rounded-xl border border-line" />}
+    {cover && (
+      <Image
+        src={cover}
+        alt={coverAlt ?? ''}
+        widths={[768, 1200, 1600]}
+        sizes="(min-width: 768px) 720px, 100vw"
+        loading="eager"
+        class="mt-10 w-full rounded-xl border border-line"
+      />
+    )}
 
     <div class="prose-tokens prose mt-10 max-w-none prose-headings:font-serif prose-headings:font-normal prose-h2:text-3xl">
       <Content />
     </div>
+
+    {gallery && gallery.length > 0 && <ProjectGallery items={gallery} lang={lang} />}
   </article>
 </BaseLayout>
