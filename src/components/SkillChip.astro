@@ -1,17 +1,23 @@
 ---
 import type { Tech } from '../data/skills';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
   tech: Tech;
+  lang: Lang;
 }
 
-const { tech } = Astro.props;
+const { tech, lang } = Astro.props;
+const name = typeof tech.name === 'string' ? tech.name : tech.name[lang];
 const brand = tech.icon ? (tech.brandLight ?? `#${tech.icon.hex}`) : undefined;
 const brandDark = tech.icon ? (tech.brandDark ?? brand) : undefined;
 ---
 
 <li
-  class="chip inline-flex items-center gap-2 rounded-lg border border-line bg-surface py-2 pr-3.5 pl-2.5 text-sm font-medium transition hover:-translate-y-px hover:border-accent"
+  class:list={[
+    'chip inline-flex items-center gap-2 rounded-lg border border-line bg-surface py-2 pr-3.5 text-sm font-medium transition hover:-translate-y-px hover:border-accent',
+    tech.icon ? 'pl-2.5' : 'pl-3.5',
+  ]}
   style={brand ? `--brand: ${brand}; --brand-dark: ${brandDark}` : undefined}
 >
   {tech.icon && (
@@ -23,7 +29,7 @@ const brandDark = tech.icon ? (tech.brandDark ?? brand) : undefined;
       <path d={tech.icon.path} />
     </svg>
   )}
-  {tech.name}
+  {name}
 </li>
 
 <style>

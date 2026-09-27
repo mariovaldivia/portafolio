@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { formatDateRange, formatYearMonth } from '../src/lib/dates';
 import { profile } from '../src/data/profile';
+import { education } from '../src/data/education';
 import { experience } from '../src/data/experience';
 import { skillCategories } from '../src/data/skills';
 import { terminalLines } from '../src/data/terminal';
@@ -48,7 +49,7 @@ describe('formatDateRange', () => {
 });
 
 describe('bilingual data', () => {
-  const entries = collectLocalized({ profile, experience, skillCategories }, 'data');
+  const entries = collectLocalized({ profile, experience, education, skillCategories }, 'data');
 
   it('finds bilingual fields', () => {
     expect(entries.length).toBeGreaterThan(5);
@@ -69,12 +70,26 @@ describe('experience', () => {
   it('includes the current job', () => {
     expect(experience[0]).toMatchObject({ company: 'Ninja Excel', end: null });
   });
+
+  it('has a bilingual role for every job', () => {
+    for (const job of experience) {
+      expect(job.role.es.trim(), job.company).not.toBe('');
+      expect(job.role.en.trim(), job.company).not.toBe('');
+    }
+  });
+});
+
+describe('education', () => {
+  it('is sorted from most recent to oldest', () => {
+    const years = education.map((item) => item.year);
+    expect(years).toEqual([...years].sort((a, b) => b - a));
+  });
 });
 
 describe('skills', () => {
   it('every icon has an SVG path', () => {
     for (const tech of skillCategories.flatMap((c) => c.items)) {
-      if (tech.icon) expect(tech.icon.path.length, tech.name).toBeGreaterThan(0);
+      if (tech.icon) expect(tech.icon.path.length, tech.icon.title).toBeGreaterThan(0);
     }
   });
 });

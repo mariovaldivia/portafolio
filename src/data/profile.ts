@@ -15,15 +15,19 @@ export interface Profile {
 export const profile: Profile = {
   name: 'Mario Valdivia',
   title: 'Software Engineer',
-  location: { es: 'Chile · Remoto', en: 'Chile · Remote' },
+  location: { es: 'Copiapó, Chile · Remoto', en: 'Copiapó, Chile · Remote' },
   tagline: {
-    es: 'Construyo software backend robusto y productos web pensados para durar.',
-    en: 'I build robust backend software and web products designed to last.',
+    es: 'Más de 12 años construyendo soluciones end-to-end: desde plataformas web en la nube hasta integraciones con hardware industrial.',
+    en: 'Over 12 years building end-to-end solutions: from cloud web platforms to industrial hardware integrations.',
   },
   bio: {
-    es: 'Soy ingeniero de software con foco en backend y aplicaciones web. Disfruto diseñar sistemas claros y mantenibles, trabajar con bases de datos relacionales y automatizar entornos para que el equipo avance más rápido.',
-    en: "I'm a software engineer focused on backend and web applications. I enjoy designing clear, maintainable systems, working with relational databases and automating environments so the team can move faster.",
+    es: 'Ingeniero de Software con más de 12 años de experiencia desarrollando soluciones tecnológicas end-to-end, en entornos de desarrollo web cloud con tecnologías y prácticas modernas (Python/Django, PHP/Symfony, APIs REST, CI/CD, Docker). Tengo experiencia en gestión de proyectos de ingeniería, formulación de propuestas técnicas, licitaciones y entrega de soluciones críticas, con foco en eficiencia, calidad y continuidad operacional.',
+    en: 'Software Engineer with over 12 years of experience building end-to-end technology solutions in cloud web environments with modern tools and practices (Python/Django, PHP/Symfony, REST APIs, CI/CD, Docker). I have experience managing engineering projects, preparing technical proposals and tenders, and delivering mission-critical solutions, with a focus on efficiency, quality and operational continuity.',
   },
-  links: { email: '#', linkedin: '#', github: '#' },
+  links: {
+    email: 'mailto:mario.valdivia.dev@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/mario-valdivia',
+    github: 'https://github.com/mariovaldivia',
+  },
   cv: { es: 'cv-es.pdf', en: 'cv-en.pdf' },
 };

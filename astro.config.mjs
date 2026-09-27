@@ -3,11 +3,10 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 // GitHub Pages:
-// - Reemplaza "usuario" por tu usuario de GitHub.
 // - Si el repositorio NO se llama "portafolio", cambia `base` a "/<nombre-del-repo>".
 // - Si el repositorio es "<usuario>.github.io", elimina la línea `base`.
 export default defineConfig({
-  site: 'https://usuario.github.io',
+  site: 'https://mariovaldivia.github.io',
   base: '/portafolio',
   i18n: {
     locales: ['es', 'en'],

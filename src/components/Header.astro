@@ -16,6 +16,7 @@ const home = localizePath(lang);
 const items: Array<[label: UiKey, anchor: UiKey]> = [
   ['nav.about', 'anchor.about'],
   ['nav.experience', 'anchor.experience'],
+  ['nav.education', 'anchor.education'],
   ['nav.skills', 'anchor.skills'],
   ['nav.projects', 'anchor.projects'],
   ['nav.contact', 'anchor.contact'],
@@ -29,7 +30,7 @@ const links = items.map(([label, anchor]) => ({ label: t(label), href: `${home}#
       {profile.name}
     </a>
 
-    <nav aria-label={t('nav.label')} class="hidden md:block">
+    <nav aria-label={t('nav.label')} class="hidden lg:block">
       <ul class="flex gap-6 text-sm text-muted">
         {links.map((link) => (
           <li>
@@ -44,7 +45,7 @@ const links = items.map(([label, anchor]) => ({ label: t(label), href: `${home}#
     <div class="flex items-center gap-2">
       <LangSwitch lang={lang} />
       <ThemeToggle label={t('theme.toggle')} />
-      <details class="mobile-menu relative md:hidden">
+      <details class="mobile-menu relative lg:hidden">
         <summary class="cursor-pointer list-none rounded-full border border-line px-3 py-1 font-mono text-xs [&::-webkit-details-marker]:hidden">
           {t('nav.menu')}
         </summary>

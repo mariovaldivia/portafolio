@@ -19,13 +19,16 @@ function frontmatterValue(lang: string, slug: string, key: string): string | und
 
 describe('splitProjectId', () => {
   it('splits language and slug', () => {
-    expect(splitProjectId('es/api-facturacion')).toEqual({ lang: 'es', slug: 'api-facturacion' });
-    expect(splitProjectId('en/toolkit-docker')).toEqual({ lang: 'en', slug: 'toolkit-docker' });
+    expect(splitProjectId('es/sicam')).toEqual({ lang: 'es', slug: 'sicam' });
+    expect(splitProjectId('en/intranet-corporativa')).toEqual({
+      lang: 'en',
+      slug: 'intranet-corporativa',
+    });
   });
 
   it('rejects ids outside a language folder', () => {
-    expect(() => splitProjectId('api-facturacion')).toThrow();
-    expect(() => splitProjectId('fr/api-facturacion')).toThrow();
+    expect(() => splitProjectId('sicam')).toThrow();
+    expect(() => splitProjectId('fr/sicam')).toThrow();
   });
 });
 
@@ -46,8 +49,8 @@ describe('project content', () => {
     expect(slugs('es').length).toBeGreaterThanOrEqual(3);
   });
 
-  it.each(slugs('es'))('%s shares order and year across languages', (slug) => {
-    for (const key of ['order', 'year']) {
+  it.each(slugs('es'))('%s shares order, year and company across languages', (slug) => {
+    for (const key of ['order', 'year', 'company']) {
       expect(frontmatterValue('en', slug, key), key).toBe(frontmatterValue('es', slug, key));
     }
   });

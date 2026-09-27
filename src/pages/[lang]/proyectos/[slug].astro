@@ -21,7 +21,8 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { entry, lang } = Astro.props;
 const t = useTranslations(lang);
 const { Content } = await render(entry);
-const { title, summary, stack, year, repo, demo, cover } = entry.data;
+const { title, summary, stack, year, company, repo, demo, cover } = entry.data;
+const meta = [company, year].filter(Boolean).join(' · ');
 const externalLinks = [
   { href: repo, label: t('projects.repo') },
   { href: demo, label: t('projects.demo') },
@@ -38,7 +39,7 @@ const externalLinks = [
     </a>
 
     <header class="mt-10 border-b border-line pb-10">
-      <p class="font-mono text-xs text-muted">{year}</p>
+      {meta && <p class="font-mono text-xs text-muted">{meta}</p>}
       <h1 class="mt-2 font-serif text-5xl leading-none md:text-6xl">{title}</h1>
       <p class="mt-5 text-lg text-muted">{summary}</p>
       <TagList items={stack} class="mt-6" />

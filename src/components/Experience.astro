@@ -26,7 +26,7 @@ const t = useTranslations(lang);
           {formatDateRange(job.start, job.end, lang)} · {job.mode[lang]}
         </p>
         <h3 class="mt-1.5 text-lg font-semibold">
-          {job.role}{' '}
+          {job.role[lang]}{' '}
           <span class="font-normal text-muted">
             ·{' '}
             {job.url ? (

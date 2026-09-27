@@ -19,6 +19,7 @@ npm run format    # Prettier
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Nombre, título, frase, bio, links, CV | `src/data/profile.ts`                                                                                                |
 | Experiencia laboral                   | `src/data/experience.ts`                                                                                             |
+| Educación                             | `src/data/education.ts`                                                                                              |
 | Habilidades (chips)                   | `src/data/skills.ts` — íconos de [simple-icons](https://simpleicons.org) (`import { siNombre } from 'simple-icons'`) |
 | Terminal del hero                     | `src/data/terminal.ts`                                                                                               |
 | Textos de la interfaz                 | `src/i18n/ui.ts`                                                                                                     |
@@ -30,7 +31,7 @@ npm run format    # Prettier
 
 ## Deploy en GitHub Pages
 
-1. En `astro.config.mjs`, reemplaza `usuario` en `site` por tu usuario de GitHub.
+1. En `astro.config.mjs`, `site` apunta a `https://mariovaldivia.github.io`.
    Si el repositorio no se llama `portafolio`, ajusta `base`. Si el repositorio es `<usuario>.github.io`, elimina `base`.
 2. Sube el repositorio a GitHub (rama `main`).
 3. En **Settings → Pages → Build and deployment**, elige **Source: GitHub Actions**.
