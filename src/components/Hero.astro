@@ -1,7 +1,7 @@
 ---
 import { profile } from '../data/profile';
 import type { Lang } from '../i18n/ui';
-import { useTranslations, withBase } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
 import HeroTerminal from './HeroTerminal.astro';
 
 interface Props {
@@ -28,11 +28,10 @@ const t = useTranslations(lang);
           {t('hero.cta.projects')}
         </a>
         <a
-          href={withBase(profile.cv[lang])}
-          download
+          href={`#${t('anchor.contact')}`}
           class="rounded-md border border-fg bg-bg px-5 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
         >
-          {t('hero.cta.cv')} ↓
+          {t('hero.cta.contact')}
         </a>
       </div>
     </div>

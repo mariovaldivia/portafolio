@@ -28,7 +28,7 @@ const es = {
   'meta.description':
     'Mario Valdivia, Software Engineer en Chile con más de 12 años de experiencia en PHP/Symfony, Python/Django y sistemas integrados con hardware.',
   'hero.cta.projects': 'Ver proyectos',
-  'hero.cta.cv': 'Descargar CV',
+  'hero.cta.contact': 'Contáctame',
   'about.kicker': '01 — Sobre mí',
   'experience.kicker': '02 — Experiencia',
   'experience.title': 'Carrera',
@@ -73,7 +73,7 @@ const en: Record<UiKey, string> = {
   'meta.description':
     'Mario Valdivia, Chile-based Software Engineer with over 12 years of experience in PHP/Symfony, Python/Django and hardware-integrated systems.',
   'hero.cta.projects': 'View projects',
-  'hero.cta.cv': 'Download CV',
+  'hero.cta.contact': 'Get in touch',
   'about.kicker': '01 — About',
   'experience.kicker': '02 — Experience',
   'experience.title': 'Career',

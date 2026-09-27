@@ -8,8 +8,6 @@ export interface Profile {
   bio: Localized;
   /** Usa 'mailto:tu@correo.com' y URLs completas. '#' = pendiente. */
   links: { email: string; linkedin: string; github: string };
-  /** Archivos dentro de public/. */
-  cv: Localized;
 }
 
 export const profile: Profile = {
@@ -29,5 +27,4 @@ export const profile: Profile = {
     linkedin: 'https://www.linkedin.com/in/mario-valdivia',
     github: 'https://github.com/mariovaldivia',
   },
-  cv: { es: 'cv-es.pdf', en: 'cv-en.pdf' },
 };
