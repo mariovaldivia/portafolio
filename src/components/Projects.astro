@@ -1,0 +1,27 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { getProjectsByLang } from '../lib/projects';
+import ProjectCard from './ProjectCard.astro';
+import Section from './Section.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const projects = await getProjectsByLang(lang, { featuredOnly: true });
+---
+
+<Section id={t('anchor.projects')} kicker={t('projects.kicker')} title={t('projects.title')}>
+  <ul class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
+    {
+      projects.map((entry) => (
+        <li>
+          <ProjectCard entry={entry} lang={lang} />
+        </li>
+      ))
+    }
+  </ul>
+</Section>

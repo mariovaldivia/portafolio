@@ -1,0 +1,31 @@
+---
+import type { Lang } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+import { splitProjectId } from '../lib/project-utils';
+import type { ProjectEntry } from '../lib/projects';
+import TagList from './TagList.astro';
+
+interface Props {
+  entry: ProjectEntry;
+  lang: Lang;
+}
+
+const { entry, lang } = Astro.props;
+const t = useTranslations(lang);
+const { slug } = splitProjectId(entry.id);
+const { title, summary, stack, year } = entry.data;
+---
+
+<a
+  href={localizePath(lang, `proyectos/${slug}`)}
+  class="group flex h-full flex-col gap-3 rounded-xl border border-line bg-surface p-6 transition hover:-translate-y-0.5 hover:border-accent"
+>
+  <span class="font-mono text-xs text-muted">{year}</span>
+  <h3 class="font-serif text-2xl leading-tight">{title}</h3>
+  <p class="flex-1 text-sm text-muted">{summary}</p>
+  <TagList items={stack} />
+  <span class="mt-1 text-sm font-medium text-accent">
+    {t('projects.more')}
+    <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+  </span>
+</a>
