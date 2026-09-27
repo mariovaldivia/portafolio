@@ -1,0 +1,21 @@
+---
+import { Font } from 'astro:assets';
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
+}
+---
+
+<html lang={Astro.params.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <Font cssVariable="--font-instrument-serif" />
+    <Font cssVariable="--font-inter" />
+    <Font cssVariable="--font-jetbrains-mono" />
+  </head>
+  <body class="bg-bg text-fg">
+    <h1 class="font-serif text-5xl">Mario Valdivia</h1>
+    <p class="font-mono text-accent">scaffold ok</p>
+  </body>
+</html>
