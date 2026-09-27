@@ -1,0 +1,83 @@
+---
+import { profile } from '../data/profile';
+import type { Lang, UiKey } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+import LangSwitch from './LangSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const home = localizePath(lang);
+
+const items: Array<[label: UiKey, anchor: UiKey]> = [
+  ['nav.about', 'anchor.about'],
+  ['nav.experience', 'anchor.experience'],
+  ['nav.skills', 'anchor.skills'],
+  ['nav.projects', 'anchor.projects'],
+  ['nav.contact', 'anchor.contact'],
+];
+const links = items.map(([label, anchor]) => ({ label: t(label), href: `${home}#${t(anchor)}` }));
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur">
+  <div class="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 px-6">
+    <a href={home} class="font-serif text-xl">{profile.name}</a>
+
+    <nav aria-label={t('nav.label')} class="hidden md:block">
+      <ul class="flex gap-6 text-sm text-muted">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} class="transition-colors hover:text-accent">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <LangSwitch lang={lang} />
+      <ThemeToggle label={t('theme.toggle')} />
+      <details class="mobile-menu relative md:hidden">
+        <summary
+          class="cursor-pointer list-none rounded-full border border-line px-3 py-1 font-mono text-xs [&::-webkit-details-marker]:hidden"
+        >
+          {t('nav.menu')}
+        </summary>
+        <nav
+          aria-label={t('nav.label')}
+          class="absolute right-0 mt-2 w-52 rounded-lg border border-line bg-bg p-2 shadow-lg"
+        >
+          <ul>
+            {
+              links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="block rounded px-3 py-2 text-sm transition-colors hover:bg-surface hover:text-accent"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('.mobile-menu').forEach((menu) => {
+    menu.querySelectorAll('a').forEach((link) =>
+      link.addEventListener('click', () => menu.removeAttribute('open')),
+    );
+  });
+</script>

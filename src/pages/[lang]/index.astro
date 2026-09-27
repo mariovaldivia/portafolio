@@ -1,21 +1,24 @@
 ---
-import { Font } from 'astro:assets';
-import '../../styles/global.css';
+import type { InferGetStaticPropsType } from 'astro';
+import { profile } from '../../data/profile';
+import { languages, type Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export function getStaticPaths() {
-  return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
+  return (Object.keys(languages) as Lang[]).map((lang) => ({ params: { lang }, props: { lang } }));
 }
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<html lang={Astro.params.lang}>
-  <head>
-    <meta charset="utf-8" />
-    <Font cssVariable="--font-instrument-serif" />
-    <Font cssVariable="--font-inter" />
-    <Font cssVariable="--font-jetbrains-mono" />
-  </head>
-  <body class="bg-bg text-fg">
-    <h1 class="font-serif text-5xl">Mario Valdivia</h1>
-    <p class="font-mono text-accent">scaffold ok</p>
-  </body>
-</html>
+<BaseLayout
+  lang={lang}
+  title={`${profile.name} — ${profile.title}`}
+  description={t('meta.description')}
+>
+  <!-- secciones -->
+</BaseLayout>

@@ -1,0 +1,70 @@
+---
+import { Font } from 'astro:assets';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { defaultLang, languages, type Lang } from '../i18n/ui';
+import { getAlternatePath, useTranslations, withBase } from '../i18n/utils';
+import '../styles/global.css';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+}
+
+const { lang, title, description } = Astro.props;
+const t = useTranslations(lang);
+const langs = Object.keys(languages) as Lang[];
+const absolute = (path: string) => new URL(path, Astro.site).href;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={absolute(Astro.url.pathname)} />
+    {
+      langs.map((code) => (
+        <link rel="alternate" hreflang={code} href={absolute(getAlternatePath(Astro.url, code))} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={absolute(getAlternatePath(Astro.url, defaultLang))}
+    />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <Font cssVariable="--font-instrument-serif" />
+    <Font cssVariable="--font-inter" />
+    <Font cssVariable="--font-jetbrains-mono" />
+    <script is:inline>
+      (() => {
+        let stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch {}
+        const dark = stored
+          ? stored === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+  </head>
+  <body class="min-h-dvh bg-bg text-fg">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded focus:bg-fg focus:px-3 focus:py-2 focus:text-bg"
+    >
+      {t('a11y.skip')}
+    </a>
+    <Header lang={lang} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

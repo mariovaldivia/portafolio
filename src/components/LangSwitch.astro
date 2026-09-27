@@ -1,0 +1,42 @@
+---
+import { languages, type Lang } from '../i18n/ui';
+import { getAlternatePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const langs = Object.keys(languages) as Lang[];
+---
+
+<nav
+  aria-label={t('lang.switch')}
+  class="flex items-center rounded-full border border-line px-3 py-1 font-mono text-xs"
+>
+  {
+    langs.map((code, i) => (
+      <>
+        {i > 0 && (
+          <span class="px-1 text-muted" aria-hidden="true">
+            /
+          </span>
+        )}
+        <a
+          href={getAlternatePath(Astro.url, code)}
+          hreflang={code}
+          lang={code}
+          title={languages[code]}
+          aria-current={code === lang ? 'page' : undefined}
+          class:list={[
+            'transition-colors',
+            code === lang ? 'font-medium text-accent' : 'text-muted hover:text-fg',
+          ]}
+        >
+          {code.toUpperCase()}
+        </a>
+      </>
+    ))
+  }
+</nav>
