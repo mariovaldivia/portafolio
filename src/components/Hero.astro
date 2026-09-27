@@ -1,0 +1,53 @@
+---
+import { profile } from '../data/profile';
+import type { Lang } from '../i18n/ui';
+import { useTranslations, withBase } from '../i18n/utils';
+import HeroTerminal from './HeroTerminal.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="relative overflow-hidden border-b border-line">
+  <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div
+    class="relative mx-auto grid max-w-5xl gap-14 px-6 py-24 md:grid-cols-[1.2fr_1fr] md:items-center md:py-32"
+  >
+    <div>
+      <p class="font-mono text-sm tracking-wide text-muted uppercase">{profile.title}</p>
+      <h1 class="mt-4 font-serif text-[clamp(3rem,7vw,5rem)] leading-none">{profile.name}</h1>
+      <p class="mt-6 max-w-md text-lg text-muted">{profile.tagline[lang]}</p>
+      <p class="mt-4 font-mono text-sm text-muted">{profile.location[lang]}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={`#${t('anchor.projects')}`}
+          class="rounded-md border border-fg bg-fg px-5 py-2.5 text-sm font-medium text-bg transition-opacity hover:opacity-85"
+        >
+          {t('hero.cta.projects')}
+        </a>
+        <a
+          href={withBase(profile.cv[lang])}
+          download
+          class="rounded-md border border-fg bg-bg px-5 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+        >
+          {t('hero.cta.cv')} ↓
+        </a>
+      </div>
+    </div>
+    <HeroTerminal />
+  </div>
+</section>
+
+<style>
+  .hero-grid {
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at 75% 50%, #000 10%, transparent 70%);
+  }
+</style>

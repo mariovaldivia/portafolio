@@ -4,6 +4,7 @@ import { profile } from '../../data/profile';
 import { languages, type Lang } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
 
 export function getStaticPaths() {
   return (Object.keys(languages) as Lang[]).map((lang) => ({ params: { lang }, props: { lang } }));
@@ -20,5 +21,6 @@ const t = useTranslations(lang);
   title={`${profile.name} — ${profile.title}`}
   description={t('meta.description')}
 >
+  <Hero lang={lang} />
   <!-- secciones -->
 </BaseLayout>
