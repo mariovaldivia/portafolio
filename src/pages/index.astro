@@ -1,0 +1,20 @@
+---
+import { defaultLang } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+
+const target = localizePath(defaultLang);
+---
+
+<!doctype html>
+<html lang={defaultLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={new URL(target, Astro.site).href} />
+    <title>Mario Valdivia</title>
+  </head>
+  <body>
+    <a href={target}>Ir al portafolio</a>
+  </body>
+</html>
