@@ -18,6 +18,9 @@ gallery:
   - src: ../images/sctt/home.png
     alt: Página de inicio de la aplicación web de SCTT con últimas posiciones y equipos en mantención
     caption: Aplicación web — últimas posiciones, trenes y equipos en mantención
+  - src: ../images/sctt/tren.jpg
+    alt: Equipamiento instalado en terreno para detección de trenes y activación de vías y semáforos
+    caption: Equipamiento instalado en terreno para detección de trenes y activación de vías y semáforos
 ---
 
 ## Contexto

@@ -18,6 +18,9 @@ gallery:
   - src: ../images/sctt/home.png
     alt: SCTT web application home page with latest positions and equipment under maintenance
     caption: Web application — latest positions, trains and equipment under maintenance
+  - src: ../images/sctt/tren.jpg
+    alt: Field equipment installed for train detection and track-switch and signal activation
+    caption: Field equipment installed for train detection and track-switch and signal activation
 ---
 
 ## Context
