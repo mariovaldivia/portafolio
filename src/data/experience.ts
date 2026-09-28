@@ -108,6 +108,6 @@ export const experience: Job[] = [
         },
       },
     ],
-    stack: ['PHP', 'Symfony', 'jQuery'],
+    stack: ['PHP', 'Symfony', 'MySQL', 'JavaScript', 'jQuery', 'HTML', 'CSS', 'Bash'],
   },
 ];
