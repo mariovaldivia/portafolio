@@ -5,3 +5,5 @@ dist/
 .DS_Store
 .env
 docs/
+# Captura original con nombres reales: no versionar (usar dispatch-anonimo.jpg)
+src/content/projects/images/sicam/dispatch.jpg

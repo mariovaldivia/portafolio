@@ -11,6 +11,33 @@ gallery:
   - src: ../images/sicam/01.jpg
     alt: Barrera de control de acceso
     caption: Portal de acceso a mina
+  - src: ../images/sicam/portal.jpg
+    alt: Portal con barrera, cámara y paneles solares; semáforo en verde con la barrera abierta y en rojo con la barrera cerrada
+    caption: Portal autónomo con energía solar — la barrera y el semáforo se activan según la autorización
+  - src: ../images/sicam/bus.jpg
+    alt: Trabajador acercando una tarjeta TAG de SICAM a un lector RFID en la puerta de un bus
+    caption: Validación con tarjeta TAG RFID al subir al bus de acercamiento
+  - src: ../images/sicam/dispatch-anonimo.jpg
+    alt: Software de despacho de SICAM con portales, solicitudes de acceso, ubicaciones de personas y vehículos por zona y cámara del portal
+    caption: Consola de despacho — portales, solicitudes de acceso, ubicaciones por zona y cámara en vivo (nombres difuminados)
+  - src: ../images/sicam/Imagen6.png
+    alt: Panel web de una empresa contratista con pases vigentes, por vencer y vencidos, y documentos por vencer
+    caption: Portal web para contratistas — pases, notificaciones y vencimiento de documentos
+  - src: ../images/sicam/solicitud.png
+    alt: Solicitud de pase de trabajo con empresa, contrato, zonas y personas con su porcentaje de documentación
+    caption: Revisión y aprobación de solicitudes de pase por contrato
+  - src: ../images/sicam/scan_pase_persona.png
+    alt: Autorización de ingreso impresa, credencial y teléfono móvil con código QR del pase
+    caption: Pases y credenciales con código QR, en papel o en el teléfono
+  - src: ../images/sicam/Imagen8.jpg
+    alt: Pantalla de registro de ingreso en garita con la persona autorizada, su foto y los datos del pase
+    caption: Registro de ingresos en garita a partir del código de pase o DNI
+  - src: ../images/sicam/PDA.png
+    alt: Aplicación móvil mostrando un acceso no autorizado y el registro de conductor y pasajeros de un vehículo
+    caption: App móvil — validación de acceso y registro de pasajeros por vehículo
+  - src: ../images/sicam/pda2.png
+    alt: Terminal portátil Zebra con la ficha de un funcionario
+    caption: App de validación en terminal portátil Zebra
 ---
 
 ## Contexto
