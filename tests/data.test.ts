@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { formatDateRange, formatYearMonth } from '../src/lib/dates';
 import { profile } from '../src/data/profile';
-import { education } from '../src/data/education';
 import { experience } from '../src/data/experience';
 import { skillCategories } from '../src/data/skills';
 import { terminalLines } from '../src/data/terminal';
@@ -49,7 +48,7 @@ describe('formatDateRange', () => {
 });
 
 describe('bilingual data', () => {
-  const entries = collectLocalized({ profile, experience, education, skillCategories }, 'data');
+  const entries = collectLocalized({ profile, experience, skillCategories }, 'data');
 
   it('finds bilingual fields', () => {
     expect(entries.length).toBeGreaterThan(5);
@@ -76,13 +75,6 @@ describe('experience', () => {
       expect(job.role.es.trim(), job.company).not.toBe('');
       expect(job.role.en.trim(), job.company).not.toBe('');
     }
-  });
-});
-
-describe('education', () => {
-  it('is sorted from most recent to oldest', () => {
-    const years = education.map((item) => item.year);
-    expect(years).toEqual([...years].sort((a, b) => b - a));
   });
 });
 
