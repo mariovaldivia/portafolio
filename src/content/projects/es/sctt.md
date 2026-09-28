@@ -3,7 +3,7 @@ title: SCTT
 summary: Sistema de Control de Tráfico de Trenes que muestra en un mapa digital la ubicación de cada equipo y convoy del circuito ferroviario de Codelco División El Salvador.
 company: Sattel Chile
 year: 2014
-stack: [Aplicación de escritorio, Aplicación web, Base de datos, Automatización]
+stack: [Python, Django, HTML, CSS, PostgreSQL, C#, WPF, RFID, Comunicación con PLC]
 order: 4
 featured: true
 cover: ../images/sctt/sctt.png
@@ -36,13 +36,14 @@ El SCTT se diseñó con cinco objetivos:
 
 Desarrollé un sistema compuesto por dos aplicaciones:
 
-- **SCTT Dispatch**, la aplicación de escritorio de operación. Se ejecuta en una de las consolas del módulo de despacho y muestra el mapa del circuito ferroviario con zoom, la posición de trenes y equipos, marcadores en terreno, la composición de cada tren (locomotora, culatero y carros), notificaciones de los cambios de línea y el estado de los servidores principal y secundario.
-- **Aplicación web de SCTT**, que trabaja sobre la misma base de datos, con módulos de reportes, mapa, trenes, equipos, operadores, marcadores y usuarios. Su inicio resume las últimas posiciones registradas y los equipos en mantención.
+- **SCTT Dispatch**, la aplicación de escritorio de operación, desarrollada en **C# y WPF**. Se ejecuta en una de las consolas del módulo de despacho y muestra el mapa del circuito ferroviario con zoom, la posición de trenes y equipos, marcadores en terreno, la composición de cada tren (locomotora, culatero y carros), notificaciones de los cambios de línea y el estado de los servidores principal y secundario.
+- **Aplicación web de SCTT**, desarrollada con **Python/Django**, HTML y CSS sobre la misma base de datos **PostgreSQL**, con módulos de reportes, mapa, trenes, equipos, operadores, marcadores y usuarios. Su inicio resume las últimas posiciones registradas y los equipos en mantención.
 
 Además:
 
-- Integré las lecturas de posición con las rutas asignadas para **activar automáticamente los cambios de línea**.
-- Registré cada movimiento del circuito en base de datos, lo que crea un historial consultable de la operación.
+- Detecté el paso de trenes y equipos con lectores **RFID** en puntos del circuito.
+- Integré esas lecturas con las rutas asignadas para **activar automáticamente los cambios de línea** mediante **comunicación con PLC**.
+- Registré cada movimiento del circuito en PostgreSQL, lo que crea un historial consultable de la operación.
 
 ## Retos técnicos
 

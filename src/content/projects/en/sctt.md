@@ -3,7 +3,7 @@ title: SCTT
 summary: Train Traffic Control System that shows the location of every unit and convoy on Codelco El Salvador Division's railway network on a digital map.
 company: Sattel Chile
 year: 2014
-stack: [Desktop app, Web app, Database, Automation]
+stack: [Python, Django, HTML, CSS, PostgreSQL, C#, WPF, RFID, PLC communication]
 order: 4
 featured: true
 cover: ../images/sctt/sctt.png
@@ -36,13 +36,14 @@ SCTT was designed around five goals:
 
 I developed a system made up of two applications:
 
-- **SCTT Dispatch**, the desktop operations application. It runs on one of the consoles in the dispatch center and shows a zoomable network map with train and equipment positions, field markers, each train's makeup (locomotive, rear car and wagons), track-switch notifications and the status of the primary and secondary servers.
-- **SCTT web application**, running on the same database, with modules for reports, map, trains, equipment, operators, markers and users. Its home page summarizes the latest recorded positions and equipment under maintenance.
+- **SCTT Dispatch**, the desktop operations application, built with **C# and WPF**. It runs on one of the consoles in the dispatch center and shows a zoomable network map with train and equipment positions, field markers, each train's makeup (locomotive, rear car and wagons), track-switch notifications and the status of the primary and secondary servers.
+- **SCTT web application**, built with **Python/Django**, HTML and CSS on the same **PostgreSQL** database, with modules for reports, map, trains, equipment, operators, markers and users. Its home page summarizes the latest recorded positions and equipment under maintenance.
 
 On top of that, I:
 
-- Integrated position readings with assigned routes to **switch tracks automatically**.
-- Logged every movement on the network to the database, creating a searchable history of operations.
+- Detected trains and equipment passing checkpoints on the network with **RFID** readers.
+- Integrated those readings with assigned routes to **switch tracks automatically** through **PLC communication**.
+- Logged every movement on the network to PostgreSQL, creating a searchable history of operations.
 
 ## Technical challenges
 
