@@ -2,9 +2,22 @@
 title: SCTT
 summary: Train Traffic Control System that shows the location of every unit and convoy on Codelco El Salvador Division's railway network on a digital map.
 company: Sattel Chile
+year: 2014
 stack: [Desktop app, Web app, Database, Automation]
 order: 4
 featured: true
+cover: ../images/sctt/sctt.png
+coverAlt: Digital railway network map in SCTT Dispatch
+gallery:
+  - src: ../images/sctt/sctt.png
+    alt: SCTT Dispatch showing the network map, train markers and notifications panel
+    caption: SCTT Dispatch — network map with trains, readers and track-switch notifications
+  - src: ../images/sctt/mapa.png
+    alt: Overview of the full railway network in SCTT Dispatch
+    caption: Network overview, from the yard to the mine interior
+  - src: ../images/sctt/home.png
+    alt: SCTT web application home page with latest positions and equipment under maintenance
+    caption: Web application — latest positions, trains and equipment under maintenance
 ---
 
 ## Context
@@ -23,8 +36,8 @@ SCTT was designed around five goals:
 
 I developed a system made up of two applications:
 
-- **SCTT Dispatch**, the operations software. It runs on one of the consoles in the dispatch center and displays the railway network map along with a set of tools to monitor and operate the system's components.
-- **SCTT web application**, which complements the dispatch console on the same database.
+- **SCTT Dispatch**, the desktop operations application. It runs on one of the consoles in the dispatch center and shows a zoomable network map with train and equipment positions, field markers, each train's makeup (locomotive, rear car and wagons), track-switch notifications and the status of the primary and secondary servers.
+- **SCTT web application**, running on the same database, with modules for reports, map, trains, equipment, operators, markers and users. Its home page summarizes the latest recorded positions and equipment under maintenance.
 
 On top of that, I:
 

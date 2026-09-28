@@ -2,9 +2,22 @@
 title: SCTT
 summary: Sistema de Control de Tráfico de Trenes que muestra en un mapa digital la ubicación de cada equipo y convoy del circuito ferroviario de Codelco División El Salvador.
 company: Sattel Chile
+year: 2014
 stack: [Aplicación de escritorio, Aplicación web, Base de datos, Automatización]
 order: 4
 featured: true
+cover: ../images/sctt/sctt.png
+coverAlt: Mapa digital del circuito ferroviario en SCTT Dispatch
+gallery:
+  - src: ../images/sctt/sctt.png
+    alt: SCTT Dispatch con el mapa del circuito, marcadores de trenes y panel de notificaciones
+    caption: SCTT Dispatch — mapa del circuito con trenes, lectores y notificaciones de cambios de línea
+  - src: ../images/sctt/mapa.png
+    alt: Vista general del circuito ferroviario completo en SCTT Dispatch
+    caption: Vista general del circuito, desde el sector patio hasta el interior mina
+  - src: ../images/sctt/home.png
+    alt: Página de inicio de la aplicación web de SCTT con últimas posiciones y equipos en mantención
+    caption: Aplicación web — últimas posiciones, trenes y equipos en mantención
 ---
 
 ## Contexto
@@ -23,8 +36,8 @@ El SCTT se diseñó con cinco objetivos:
 
 Desarrollé un sistema compuesto por dos aplicaciones:
 
-- **SCTT Dispatch**, el software de operación. Se ejecuta en una de las consolas del módulo de despacho y muestra el mapa del circuito ferroviario junto a un conjunto de herramientas para monitorear y operar los componentes del sistema.
-- **Aplicación web de SCTT**, que complementa a la consola de despacho sobre la misma base de datos.
+- **SCTT Dispatch**, la aplicación de escritorio de operación. Se ejecuta en una de las consolas del módulo de despacho y muestra el mapa del circuito ferroviario con zoom, la posición de trenes y equipos, marcadores en terreno, la composición de cada tren (locomotora, culatero y carros), notificaciones de los cambios de línea y el estado de los servidores principal y secundario.
+- **Aplicación web de SCTT**, que trabaja sobre la misma base de datos, con módulos de reportes, mapa, trenes, equipos, operadores, marcadores y usuarios. Su inicio resume las últimas posiciones registradas y los equipos en mantención.
 
 Además:
 
