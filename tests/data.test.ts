@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { formatDateRange, formatYearMonth } from '../src/lib/dates';
+import { aboutPillars } from '../src/data/about';
 import { profile } from '../src/data/profile';
 import { experience } from '../src/data/experience';
 import { skillCategories } from '../src/data/skills';
@@ -48,7 +49,7 @@ describe('formatDateRange', () => {
 });
 
 describe('bilingual data', () => {
-  const entries = collectLocalized({ profile, experience, skillCategories }, 'data');
+  const entries = collectLocalized({ profile, aboutPillars, experience, skillCategories }, 'data');
 
   it('finds bilingual fields', () => {
     expect(entries.length).toBeGreaterThan(5);
@@ -83,6 +84,12 @@ describe('skills', () => {
     for (const tech of skillCategories.flatMap((c) => c.items)) {
       if (tech.icon) expect(tech.icon.path.length, tech.icon.title).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('about pillars', () => {
+  it('has four pillars', () => {
+    expect(aboutPillars).toHaveLength(4);
   });
 });
 

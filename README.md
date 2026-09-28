@@ -18,6 +18,7 @@ npm run format    # Prettier
 | Qué                               | Dónde                                                                                                                |
 | --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Nombre, título, frase, bio, links | `src/data/profile.ts`                                                                                                |
+| Tarjetas de "Sobre mí"            | `src/data/about.ts`                                                                                                  |
 | Experiencia laboral               | `src/data/experience.ts`                                                                                             |
 | Habilidades (chips)               | `src/data/skills.ts` — íconos de [simple-icons](https://simpleicons.org) (`import { siNombre } from 'simple-icons'`) |
 | Terminal del hero                 | `src/data/terminal.ts`                                                                                               |
