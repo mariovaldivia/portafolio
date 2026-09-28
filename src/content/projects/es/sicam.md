@@ -5,6 +5,12 @@ company: Sattel Chile
 stack: [Python, Django, Edge computing, RFID, PLC, Modbus, Serial]
 order: 1
 featured: true
+cover: ../images/sicam/01.jpg
+coverAlt: Sistema de control de acceso a mina
+gallery:
+  - src: ../images/sicam/01.jpg
+    alt: Barrera de control de acceso
+    caption: Portal de acceso a mina
 ---
 
 ## Contexto

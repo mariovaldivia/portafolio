@@ -5,6 +5,12 @@ company: Sattel Chile
 stack: [Python, Django, Edge computing, RFID, PLC, Modbus, Serial]
 order: 1
 featured: true
+cover: ../images/sicam/01.jpg
+coverAlt: Mine access control system
+gallery:
+  - src: ../images/sicam/01.jpg
+    alt: Access control barrier
+    caption: Mine access gate
 ---
 
 ## Context
