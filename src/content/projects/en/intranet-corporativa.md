@@ -2,7 +2,7 @@
 title: Corporate intranet
 summary: Web platform that centralizes resource management, risk prevention and technical services for the company.
 company: Sattel Chile
-stack: [PHP, Symfony, HTML, CSS, JavaScript, jQuery, Bootstrap]
+stack: [PHP, Symfony, MySQL, HTML, CSS, JavaScript, jQuery, Bootstrap]
 order: 3
 featured: true
 cover: ../images/intranet-corporativa/social.png
