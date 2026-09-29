@@ -62,6 +62,7 @@ Diseñé e implementé SICAM de punta a punta, como una plataforma con varios co
 ## Retos técnicos
 
 - **Unir software y hardware industrial**: comunicar la plataforma con PLC, lectores RFID, barreras y semáforos a través de protocolos industriales, en un entorno donde la continuidad operacional es clave.
+- **Arquitectura multi-tenant**: una sola plataforma para distintos mandantes y faenas, con los datos aislados por cliente y una configuración propia de zonas, portales, tipos de pase, reglas de acreditación e imagen corporativa.
 - **Portales en lugares remotos**: equipos alimentados con energía solar y con lógica en el borde, capaces de operar en sitio.
 - **Varios canales, una misma regla**: RFID, QR, DNI y la app móvil debían aplicar los mismos criterios de autorización (documentación vigente, zona permitida y plazo del pase).
 - **Visibilidad en tiempo real**: mantener actualizada la ubicación de cientos de personas y vehículos por zona para el despachador.

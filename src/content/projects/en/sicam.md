@@ -62,6 +62,7 @@ I designed and built SICAM end to end as a platform with several components:
 ## Technical challenges
 
 - **Bridging software and industrial hardware**: connecting the platform to PLCs, RFID readers, barriers and signals over industrial protocols, in an environment where operational continuity is key.
+- **Multi-tenant architecture**: a single platform for different mine operators and sites, with data isolated per client and its own configuration of zones, gates, pass types, accreditation rules and branding.
 - **Gates in remote locations**: solar-powered equipment with edge logic, able to operate on site.
 - **Many channels, one set of rules**: RFID, QR, ID number and the mobile app had to apply the same authorization criteria (valid documentation, allowed zone and pass validity).
 - **Real-time visibility**: keeping the location of hundreds of people and vehicles by zone up to date for the dispatcher.
