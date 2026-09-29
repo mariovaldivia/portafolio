@@ -42,20 +42,34 @@ gallery:
 
 ## Contexto
 
-En las faenas mineras, controlar quién y qué entra al sitio es crítico para la seguridad y el cumplimiento. La acreditación de personal y vehículos necesitaba un sistema confiable que funcionara en terreno y actuara directamente sobre la infraestructura física de acceso.
+En las faenas mineras, controlar quién y qué entra al sitio es crítico para la seguridad y el cumplimiento. Cada día ingresan trabajadores propios, contratistas, visitas y vehículos, y cada uno debe tener su documentación al día y un permiso para la zona a la que se dirige.
+
+El proceso de acreditación involucraba a muchos actores: las empresas contratistas que solicitan los pases, el mandante que los aprueba, la garita que registra el ingreso y los portales en terreno que controlan el paso físico. Se necesitaba un sistema que conectara todo el flujo y actuara directamente sobre la infraestructura de acceso.
 
 ## Qué hice
 
-- Diseñé e implementé el sistema de punta a punta.
-- Construí la aplicación web de gestión y acreditación con **Python/Django**.
-- Identifiqué a personas y vehículos con **tecnología RFID**.
-- Desplegué la lógica en el borde (**edge computing**) para operar en sitio.
-- Integré la activación remota de periféricos (barreras, señalización) mediante **PLC**, usando los protocolos **Modbus** y **Serial**.
+Diseñé e implementé SICAM de punta a punta, como una plataforma con varios componentes:
+
+- **Portal web para contratistas** (**Python/Django**): cada empresa registra a sus trabajadores y vehículos, solicita pases de trabajo, de visita o vehiculares, y recibe avisos de pases por vencer y de documentos vencidos.
+- **Aprobación de pases**: el mandante revisa cada solicitud por contrato, con las zonas autorizadas, el plazo y el porcentaje de documentación de cada persona, y aprueba o rechaza el pase.
+- **Pases y credenciales con código QR**, disponibles impresos o en el teléfono.
+- **Portales de acceso autónomos** en terreno, con barrera, semáforo, cámara y lectores **RFID**, alimentados con energía solar y con la lógica desplegada en el borde (**edge computing**). Los periféricos se activan mediante **PLC**, usando los protocolos **Modbus** y **Serial**.
+- **Tarjetas TAG RFID**, que también se validan al subir a los buses de acercamiento.
+- **Consola de despacho**, que muestra en tiempo real la actividad de cada portal (entradas, salidas y bloqueos), las solicitudes de acceso, la ubicación de personas y vehículos por zona y la cámara en vivo. Desde ella el despachador puede abrir barreras o asignar escoltas.
+- **Registro de ingresos en garita**, a partir del código del pase o del DNI.
+- **App móvil en terminales portátiles Zebra**, para validar accesos en terreno, mostrar el motivo cuando un acceso no está autorizado y registrar al conductor y a los pasajeros de cada vehículo.
 
 ## Retos técnicos
 
-El núcleo del proyecto fue unir el mundo del software con el del hardware industrial: comunicar la aplicación web con PLC y lectores RFID a través de protocolos industriales, en un entorno de faena donde la continuidad operacional es clave.
+- **Unir software y hardware industrial**: comunicar la plataforma con PLC, lectores RFID, barreras y semáforos a través de protocolos industriales, en un entorno donde la continuidad operacional es clave.
+- **Portales en lugares remotos**: equipos alimentados con energía solar y con lógica en el borde, capaces de operar en sitio.
+- **Varios canales, una misma regla**: RFID, QR, DNI y la app móvil debían aplicar los mismos criterios de autorización (documentación vigente, zona permitida y plazo del pase).
+- **Visibilidad en tiempo real**: mantener actualizada la ubicación de cientos de personas y vehículos por zona para el despachador.
 
 ## Resultado
 
-Una gestión de acreditación optimizada en faenas mineras, con control del ingreso de personal y vehículos en sitio. SICAM pasó a formar parte del catálogo de productos que la empresa ofrece en Chile y Perú.
+- Acreditación digital de punta a punta: desde la solicitud del contratista hasta el paso físico por el portal.
+- Barreras y semáforos que responden automáticamente a cada autorización.
+- Visibilidad en tiempo real de cuántas personas y vehículos hay en cada zona de la faena.
+- Menos trabajo manual en garita gracias a los pases con QR y a la validación con RFID y dispositivos móviles.
+- SICAM pasó a formar parte del catálogo de productos de la empresa y se implementó en faenas mineras de Chile y Perú.

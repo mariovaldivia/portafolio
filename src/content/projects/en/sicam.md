@@ -42,20 +42,34 @@ gallery:
 
 ## Context
 
-At mining sites, controlling who and what enters is critical for safety and compliance. Accrediting personnel and vehicles required a reliable system that worked on site and acted directly on the physical access infrastructure.
+At mining sites, controlling who and what enters is critical for safety and compliance. Every day, employees, contractors, visitors and vehicles come in, and each of them must have up-to-date documentation and a permit for the zone they are heading to.
+
+Accreditation involved many parties: contractor companies requesting passes, the mine operator approving them, the gatehouse logging entries and the field gates controlling physical access. The site needed a system that connected the whole workflow and acted directly on the access infrastructure.
 
 ## What I did
 
-- Designed and built the system end to end.
-- Built the management and accreditation web application with **Python/Django**.
-- Identified people and vehicles using **RFID technology**.
-- Deployed logic at the edge (**edge computing**) to operate on site.
-- Integrated remote activation of peripherals (barriers, signaling) through **PLCs** over **Modbus** and **Serial** protocols.
+I designed and built SICAM end to end as a platform with several components:
+
+- **Contractor web portal** (**Python/Django**): each company registers its workers and vehicles, requests work, visitor or vehicle passes, and gets alerts about passes and documents about to expire.
+- **Pass approval**: the mine operator reviews each request per contract, with authorized zones, validity period and each person's documentation percentage, and approves or rejects the pass.
+- **Passes and badges with QR codes**, available on paper or on the phone.
+- **Standalone access gates** in the field, with barrier, traffic signal, camera and **RFID** readers, solar-powered and running logic at the edge (**edge computing**). Peripherals are driven through **PLCs** over **Modbus** and **Serial**.
+- **RFID TAG cards**, also checked when boarding shuttle buses.
+- **Dispatch console** showing real-time activity at each gate (entries, exits and blocks), access requests, people and vehicle locations by zone and a live camera feed. The dispatcher can open barriers or assign escorts from it.
+- **Gatehouse entry log**, from the pass code or ID number.
+- **Mobile app on Zebra handheld terminals** to validate access in the field, show the reason when access is denied and register each vehicle's driver and passengers.
 
 ## Technical challenges
 
-The core of the project was bridging software and industrial hardware: connecting the web application to PLCs and RFID readers over industrial protocols, in a mining environment where operational continuity is key.
+- **Bridging software and industrial hardware**: connecting the platform to PLCs, RFID readers, barriers and signals over industrial protocols, in an environment where operational continuity is key.
+- **Gates in remote locations**: solar-powered equipment with edge logic, able to operate on site.
+- **Many channels, one set of rules**: RFID, QR, ID number and the mobile app had to apply the same authorization criteria (valid documentation, allowed zone and pass validity).
+- **Real-time visibility**: keeping the location of hundreds of people and vehicles by zone up to date for the dispatcher.
 
 ## Outcome
 
-Streamlined accreditation at mining sites, with on-site control of personnel and vehicle entry. SICAM became part of the product catalog the company offers in Chile and Peru.
+- End-to-end digital accreditation: from the contractor's request to the physical pass through the gate.
+- Barriers and signals that respond automatically to each authorization.
+- Real-time visibility of how many people and vehicles are in each zone of the site.
+- Less manual work at the gatehouse thanks to QR passes and validation with RFID and mobile devices.
+- SICAM became part of the company's product catalog and was deployed at mining sites in Chile and Peru.
