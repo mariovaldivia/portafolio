@@ -5,6 +5,18 @@ company: Sattel Chile
 stack: [PHP, Symfony]
 order: 3
 featured: true
+cover: ../images/intranet-corporativa/planificacion.png
+coverAlt: Activity planning calendar in the corporate intranet
+gallery:
+  - src: ../images/intranet-corporativa/planificacion.png
+    alt: Monthly calendar with activities by client and site, color-coded by status
+    caption: Activity planning by client and site, with progress status
+  - src: ../images/intranet-corporativa/documentos.png
+    alt: List of workers' occupational documents with completion and expiry dates
+    caption: Occupational document tracking and expiry (risk prevention)
+  - src: ../images/intranet-corporativa/social.png
+    alt: Social wall with photo posts, employee of the month, newest employees and birthdays
+    caption: Social wall — posts, employee of the month and birthdays
 ---
 
 ## Context
